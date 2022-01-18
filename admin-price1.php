@@ -29,6 +29,11 @@ if (isset($_POST['confirm'])) {
 
     header("location:./admin-price1.php");
 }
+if (isset($_GET['Id_hapus'])) {
+    $idpesanan = $_GET['Id_hapus'];
+    mysqli_query($conn, "DELETE FROM package WHERE id = '$idpesanan'");
+    header("location: admin-price1.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -150,6 +155,7 @@ if (isset($_POST['confirm'])) {
                     <th scope="col">Size</th>
                     <th scope="col">Price</th>
                     <th scope="col">Aksi</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody style="background-color: rgba(94, 94, 94, 0.72);">
@@ -165,6 +171,9 @@ if (isset($_POST['confirm'])) {
                             <?= rupiah((int)$selects['price']) ?> / pcs
                         </td>
                         <td><button type="button" class="btn btnOrder btn-primary" data-bs-toggle="modal" data-bs-target="#modaledit<?= $selects['id'] ?>">Edit</button>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" href="admin-price1.php?Id_hapus=<?= $selects['id'] ?>">Hapus</a>
                         </td>
                     </tr>
                     <div class="modal fade" id="modaledit<?= $selects['id'] ?>" tabindex="-1" aria-labelledby="modaledit" aria-hidden="true">

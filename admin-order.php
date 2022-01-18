@@ -121,9 +121,10 @@ if (isset($_POST['update_progress'])) {
             <td><?= $selects['service_detail'] ?></td>
             <td>
               <?php if ($selects['progress'] > 0) : ?>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="<?= $selects['progress'] ?>" aria-valuemin="0" aria-valuemax="100">
-                    <?= $selects['progress'] ?>%</div>
+                <div class="progress mt-2">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="<?= $selects['progress'] ?>" style="width: <?= $selects['progress'] ?>%;" aria-valuemin="0" aria-valuemax="100">
+                    <?= $selects['progress'] ?>%
+                  </div>
                 </div>
               <?php else : ?>
                 Belum diproses
