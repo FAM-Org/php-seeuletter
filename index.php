@@ -182,19 +182,11 @@ include('config.php');
   <script>
   const btnSubmit = document.getElementById('submit');
   btnSubmit.addEventListener('click', () => {
-    Swal.fire({
-      title: 'Custom width, padding, color, background.',
-      width: 600,
-      padding: '3em',
-      color: '#716add',
-      background: '#fff url(/images/trees.png)',
-      backdrop: `
-    rgba(0,0,123,0.4)
-    url("/images/nyan-cat.gif")
-    left top
-    no-repeat
-  `
-    }).then(() => {
+    Swal.fire(
+      'Success!',
+      'message has been sent successfully!',
+      'success'
+    ).then(() => {
       location.reload();
     })
   })
