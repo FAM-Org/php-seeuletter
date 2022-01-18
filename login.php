@@ -25,14 +25,14 @@ if (isset($_POST['Login'])) {
             <form action="" method="POST">
                 <div class="form-group mb-2">
                     <label for="Name">Name</label f>
-                    <input type="text" class="form-control" id="Username" name="Username">
+                    <input type="text" class="form-control" id="Username" name="Username" value="<?php if (isset($_COOKIE['username'])) echo $_COOKIE['username']; ?>">
                 </div>
 
                 <div class="form-group mb-3">
                     <label for="Password">Password</label for="Password">
-                    <input type="text" class="form-control" id="Password" name="Password">
+                    <input type="text" class="form-control" id="Password" name="Password" value="<?php if (isset($_COOKIE['password'])) echo $_COOKIE['password']; ?>">
                 </div>
-                <div class="mb-2">
+                <div class=" mb-2">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="rememberme" name="rememberme">
                         <label class="form-check-label" for="rememberme"> Remember me</label>

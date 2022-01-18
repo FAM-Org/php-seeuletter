@@ -63,17 +63,18 @@ if (isset($_GET['Id'])) {
         <a class="navbar-brand" href="#"><img src="SeeULetter! logo.png" alt="" width="100px"></a>
         <div class="container">
             <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav" style="padding-right: 10%;">
-                <?php if (!isset($_SESSION['username'])) : ?>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php#home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php#package">Package</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php#contactus">Contact Us</a>
-                        </li>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#package">Package</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contactus">Contact Us</a>
+                    </li>
+                    <?php if (!isset($_SESSION['username'])) : ?>
                         <li class="nav-item">
                             <a class="btn btn-primary" href="login.php">Login</a>
                         </li>
@@ -83,13 +84,12 @@ if (isset($_GET['Id'])) {
                                 <?= $_SESSION['username'] ?>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="admin-order.php?">My Order</a></li>
+                                <li><a class="dropdown-item" href="pelanggan-order.php?">My Order</a></li>
                                 <li><a class="dropdown-item" href="logout.php?logout=true">Logout</a></li>
                             </ul>
                         </li>
-                        </li>
                     <?php endif; ?>
-                    </ul>
+                </ul>
             </div>
         </div>
     </nav>
