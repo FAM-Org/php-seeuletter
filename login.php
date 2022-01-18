@@ -1,5 +1,8 @@
 <?php
-
+include('config.php');
+if (isset($_POST['Login'])) {
+    Login($_POST);
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,20 +22,15 @@
     <body>
         <div class="container" style="position:absolute;left:38%;top:20%;width: 400px;height: 500px;box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);padding: 40px;background: rgb(255, 248, 255);">
             <h4 align="center"><a class="navbar-brand" href="index.php#home"><img src="SeeULetter! logo.png" alt="" width="100px"></a></h4>
-            <form>
+            <form action="" method="POST">
                 <div class="form-group mb-2">
                     <label for="Name">Name</label f>
-                    <input type="text" class="form-control" id="Name">
-                </div>
-
-                <div class="form-group mb-2">
-                    <label for="Email">Email</label>
-                    <input type="text" class="form-control" id="Email">
+                    <input type="text" class="form-control" id="Username" name="Username">
                 </div>
 
                 <div class="form-group mb-3">
                     <label for="Password">Password</label for="Password">
-                    <input type="text" class="form-control" id="Password">
+                    <input type="text" class="form-control" id="Password" name="Password">
                 </div>
                 <div class="mb-2">
                     <div class="form-check">
@@ -40,7 +38,7 @@
                         <label class="form-check-label" for="rememberme"> Remember me</label>
                     </div>
                 </div>
-                <button type="submit" name="Login" value="Login" class="btn btn-primary" button>Login</button>
+                <button type="submit" name="Login" class="btn btn-primary" button>Login</button>
             </form>
             <hr class="mt-4">
             <div>
