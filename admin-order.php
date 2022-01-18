@@ -68,7 +68,7 @@ if (isset($_POST['update_progress'])) {
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed top">
     <a class="navbar-brand" href="#"><img src="SeeULetter! logo.png" alt="" width="100px"></a>
     <div class="container">
       <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav" style="padding-right: 10%;">
@@ -88,7 +88,15 @@ if (isset($_POST['update_progress'])) {
               <a class="btn btn-primary" href="login.php">Login</a>
             </li>
           <?php else : ?>
-            <a class="btn btn-danger" href="logout.php?logout=true">Logout</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <?= $_SESSION['username'] ?>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="admin-order.php?">My Order</a></li>
+                <li><a class="dropdown-item" href="logout.php?logout=true">Logout</a></li>
+              </ul>
+            </li>
           <?php endif; ?>
         </ul>
       </div>
