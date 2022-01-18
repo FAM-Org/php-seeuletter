@@ -172,7 +172,7 @@ include('config.php');
       </div>
     </div>
   </section>
-  
+
   <footer style="background-color:white;height: 100px;">
     <center>
       <p style="font-size: larger;transform:translateY(120%);">SeeU Letter! by UrName</p>
@@ -186,7 +186,9 @@ include('config.php');
       'Success!',
       'message has been sent successfully!',
       'success'
-    )
+    ).then(() => {
+      location.reload();
+    })
   })
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
