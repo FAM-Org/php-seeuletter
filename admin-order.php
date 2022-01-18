@@ -68,27 +68,35 @@ if (isset($_POST['update_progress'])) {
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed top">
     <a class="navbar-brand" href="#"><img src="SeeULetter! logo.png" alt="" width="100px"></a>
     <div class="container">
       <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav" style="padding-right: 10%;">
 
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#home">Home</a>
+            <a class="nav-link active" aria-current="page" href="index.php#home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#package">Package</a>
+            <a class="nav-link" href="index.php#package">Package</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#contactus">Contact Us</a>
+            <a class="nav-link" href="index.php#contactus">Contact Us</a>
           </li>
           <?php if (!isset($_SESSION['username'])) : ?>
             <li class="nav-item">
               <a class="btn btn-primary" href="login.php">Login</a>
             </li>
           <?php else : ?>
-            <a class="btn btn-danger" href="logout.php?logout=true">Logout</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <?= $_SESSION['username'] ?>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="admin-order.php?">My Order</a></li>
+                <li><a class="dropdown-item" href="logout.php?logout=true">Logout</a></li>
+              </ul>
+            </li>
           <?php endif; ?>
         </ul>
       </div>

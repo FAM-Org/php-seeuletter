@@ -90,20 +90,28 @@ if (isset($_GET['Id_hapus'])) {
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.php#home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#package">Package</a>
+                        <a class="nav-link" href="index.php#package">Package</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contactus">Contact Us</a>
+                        <a class="nav-link" href="index.php#contactus">Contact Us</a>
                     </li>
                     <?php if (!isset($_SESSION['username'])) : ?>
                         <li class="nav-item">
                             <a class="btn btn-primary" href="login.php">Login</a>
                         </li>
                     <?php else : ?>
-                        <a class="btn btn-danger" href="logout.php?logout=true">Logout</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?= $_SESSION['username'] ?>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="admin-order.php?">My Order</a></li>
+                                <li><a class="dropdown-item" href="logout.php?logout=true">Logout</a></li>
+                            </ul>
+                        </li>
                     <?php endif; ?>
                 </ul>
             </div>
