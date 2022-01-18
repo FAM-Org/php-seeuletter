@@ -1,3 +1,7 @@
+<?php
+include('config.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,9 +21,14 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed top">
         <a class="navbar-brand" href="#"><img src="SeeULetter! logo.png" alt="" width="100px"></a>
         <div class="container">
+<<<<<<< HEAD
             <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav"
                 style="padding-right: 10%;">
                 <!-- <?php if (!isset($_SESSION['username'])) : ?> -->
+=======
+            <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav" style="padding-right: 10%;">
+
+>>>>>>> f88d44bd1db6c26928d39fd83ff44a43d43d2911
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#home">Home</a>
@@ -30,6 +39,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#contactus">Contact Us</a>
                     </li>
+<<<<<<< HEAD
                     <li class="nav-item">
                         <a class="btn btn-primary" href="login.php">Login</a>
                     </li>
@@ -45,6 +55,23 @@
                         </ul>
                     </li>
                     <!-- <?php endif; ?> -->
+=======
+                    <?php if (!isset($_SESSION['username'])) : ?>
+                        <li class="nav-item">
+                            <a class="btn btn-primary" href="login.php">Login</a>
+                        </li>
+                    <?php else : ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?= $_SESSION['username'] ?>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="pelanggan-order.php?">My Order</a></li>
+                                <li><a class="dropdown-item" href="logout.php?logout=true">Logout</a></li>
+                            </ul>
+                        </li>
+                    <?php endif; ?>
+>>>>>>> f88d44bd1db6c26928d39fd83ff44a43d43d2911
                 </ul>
             </div>
         </div>
