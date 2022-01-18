@@ -57,12 +57,12 @@ if (isset($_GET['id_hapus'])) {
   </script>
 </head>
 
-<body>
+<body style="background-image: url(ballons.jpg);background-size:cover;">
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed top">
     <a class="navbar-brand" href="#"><img src="SeeULetter! logo.png" alt="" width="100px"></a>
     <div class="container">
-      <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav" style="padding-right: 10%;">
+      <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
 
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -74,24 +74,22 @@ if (isset($_GET['id_hapus'])) {
           <li class="nav-item">
             <a class="nav-link" href="index.php#contactus">Contact Us</a>
           </li>
-          <?php if (!isset($_SESSION['username'])) : ?>
-            <li class="nav-item">
-              <a class="btn btn-primary" href="login.php">Login</a>
-            </li>
-          <?php else : ?>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <?= $_SESSION['username'] ?>
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="pelanggan-order.php?">My Order</a></li>
-                <li><a class="dropdown-item" href="logout.php?logout=true">Logout</a></li>
-              </ul>
-            </li>
-          <?php endif; ?>
         </ul>
       </div>
     </div>
+    <?php if (!isset($_SESSION['username'])) : ?>
+      <a class="btn btn-primary me-5" href="login.php">Login</a>
+    <?php else : ?>
+      <div class="dropdown pe-5">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <?= $_SESSION['username'] ?>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="pelanggan-order.php?">My Order</a></li>
+          <li><a class="dropdown-item" href="logout.php?logout=true">Logout</a></li>
+        </ul>
+      </div>
+    <?php endif; ?>
   </nav>
 
   <div class="container" style="margin-top: 5%;">
@@ -133,6 +131,13 @@ if (isset($_GET['id_hapus'])) {
       </tbody>
     </table>
   </div>
+
+  <footer class="fixed-bottom" style="background-color:white;height: 100px;">
+    <center>
+      <p style="font-size: larger;transform:translateY(120%);">SeeU Letter! by UrName</p>
+    </center>
+  </footer>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 </script>
