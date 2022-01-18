@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 18, 2022 at 09:53 AM
+-- Generation Time: Jan 18, 2022 at 11:39 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -34,6 +34,17 @@ CREATE TABLE `package` (
   `price` varchar(255) NOT NULL,
   `jenis_service` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `package`
+--
+
+INSERT INTO `package` (`id`, `material`, `size`, `price`, `jenis_service`) VALUES
+(1, 'Art Paper', '21 x 30 cm', '5000', 'Wedding'),
+(2, 'Art Paper', '22 x 22 cm', '7000', 'Wedding'),
+(3, 'Samson Craft', '21 x 30 cm', '8000', 'Wedding'),
+(4, 'Art Paper Ultah', '22 x 22 cm', '10000', 'Birthday'),
+(5, 'Samson Craft Ultah', '21 x 30 cm', '8000', 'Birthday');
 
 -- --------------------------------------------------------
 
@@ -69,6 +80,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `admin`) VALUES
+(1, 'admin', 'admin@gmail.com', '$2y$10$bnr4giNsmiMrz1MfX7C2D.Cy9PxXQHgmGifiTS.1c68sG/98.GCDy', 1);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -98,19 +116,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `package`
 --
 ALTER TABLE `package`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `service_order`
 --
 ALTER TABLE `service_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

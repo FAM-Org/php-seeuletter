@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
 
 $dbhost = "localhost";
 $dbuser = "root";
-$dbname = "SeeU Letter";
+$dbname = "db_seeu_letter";
 $dbpass = "";
 
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
@@ -31,7 +31,6 @@ function register($request)
 
         $password = password_hash($password, PASSWORD_DEFAULT);
         $query = "INSERT INTO users VALUES (NULL,'$username','$email', '$password', '0')";
-        die(mysqli_error($conn));
         header("Location: login.php");
         exit();
     }
