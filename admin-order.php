@@ -4,10 +4,10 @@ $email = $_SESSION["email"];
 $select = "SELECT * FROM service_order WHERE Status = 'Menunggu'";
 $query = mysqli_query($conn, $select);
 if (isset($_GET['Id'])) {
-    $idpesanan = $_GET['Id'];
-    mysqli_query($conn, "DELETE FROM service_order WHERE Id = '$idpesanan'");
-    $_SESSION['message'] = "Berhasil Hapus";
-    header("location: Admin_Details.php");
+  $idpesanan = $_GET['Id'];
+  mysqli_query($conn, "DELETE FROM service_order WHERE Id = '$idpesanan'");
+  $_SESSION['message'] = "Berhasil Hapus";
+  header("location: Admin_Details.php");
 }
 ?>
 
@@ -23,8 +23,7 @@ if (isset($_GET['Id'])) {
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <!-- Fonts -->
   <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome.min.css">
   <!-- Icon -->
@@ -36,25 +35,25 @@ if (isset($_GET['Id'])) {
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script type="text/javascript">
-  (function() {
-    emailjs.init('user_Si1vNgkO5T0KHv80OQII6');
-  })();
+    (function() {
+      emailjs.init('user_Si1vNgkO5T0KHv80OQII6');
+    })();
   </script>
   <script type="text/javascript">
-  window.onload = function() {
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      this.contact_number.value = Math.random() * 100000 | 0;
-      emailjs.sendForm('service_a2xisqe', 'template_3dsl76e', this)
-        .then(function() {
-          console.log('SUCCESS!');
-          alert("Thank You, I'll Relpy ASAP")
-        }, function(error) {
-          console.log('FAILED...', error);
-          alert("Sorry i think there is a little trouble")
-        });
-    });
-  }
+    window.onload = function() {
+      document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        this.contact_number.value = Math.random() * 100000 | 0;
+        emailjs.sendForm('service_a2xisqe', 'template_3dsl76e', this)
+          .then(function() {
+            console.log('SUCCESS!');
+            alert("Thank You, I'll Relpy ASAP")
+          }, function(error) {
+            console.log('FAILED...', error);
+            alert("Sorry i think there is a little trouble")
+          });
+      });
+    }
   </script>
 </head>
 
@@ -76,20 +75,11 @@ if (isset($_GET['Id'])) {
             <a class="nav-link" href="#contactus">Contact Us</a>
           </li>
           <?php if (!isset($_SESSION['username'])) : ?>
-          <li class="nav-item">
-            <a class="btn btn-primary" href="login.php">Login</a>
-          </li>
+            <li class="nav-item">
+              <a class="btn btn-primary" href="login.php">Login</a>
+            </li>
           <?php else : ?>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <?= $_SESSION['username'] ?>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="pelanggan-order.php?">My Order</a></li>
-              <li><a class="dropdown-item" href="logout.php?logout=true">Logout</a></li>
-            </ul>
-          </li>
+            <a class="btn btn-danger" href="logout.php?logout=true">Logout</a>
           <?php endif; ?>
         </ul>
       </div>
@@ -111,21 +101,21 @@ if (isset($_GET['Id'])) {
       </thead>
       <tbody>
         <?php
-                $no = 1;
-                while ($selects = mysqli_fetch_assoc($query)) :
-                ?>
-        <tr>
-          <th scope="row"><?= $no++ ?></th>
-          <td><?= $selects['Email'] ?></td>
-          <td><?= $selects['Name'] ?></td>
-          <td><?= $selects['Kontak'] ?></td>
-          <td><?= $selects['Service_detail'] ?></td>
-          <td><?= $selects['Status'] ?></td>
-          <td>
-            <a class="btn btn-primary" href="Done.php?Id=<?= $selects['Id'] ?>">Done!</a>
-            <a class="btn btn-danger" href="Admin_Details.php?Id=<?= $selects['Id'] ?>">Hapus</a>
-          </td>
-        </tr>
+        $no = 1;
+        while ($selects = mysqli_fetch_assoc($query)) :
+        ?>
+          <tr>
+            <th scope="row"><?= $no++ ?></th>
+            <td><?= $selects['Email'] ?></td>
+            <td><?= $selects['Name'] ?></td>
+            <td><?= $selects['Kontak'] ?></td>
+            <td><?= $selects['Service_detail'] ?></td>
+            <td><?= $selects['Status'] ?></td>
+            <td>
+              <a class="btn btn-primary" href="Done.php?Id=<?= $selects['Id'] ?>">Done!</a>
+              <a class="btn btn-danger" href="Admin_Details.php?Id=<?= $selects['Id'] ?>">Hapus</a>
+            </td>
+          </tr>
         <?php endwhile; ?>
       </tbody>
     </table>

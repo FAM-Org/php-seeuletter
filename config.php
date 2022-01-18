@@ -30,7 +30,7 @@ function register($request)
     if (!mysqli_fetch_assoc($select)) {
 
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $query = "INSERT INTO users VALUES (NULL,'$username','$email', '$password', '0')";
+        $query = mysqli_query($conn, "INSERT INTO users VALUES (NULL,'$username','$email', '$password', '0')");
         header("Location: login.php");
         exit();
     }
