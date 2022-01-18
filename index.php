@@ -1,7 +1,23 @@
 <?php
 include('config.php');
 
+// if (isset($_POST['contact'])) {
+//     $name = $_POST['name'];
+//     $subject = $_POST['subject'];
+//     $email = $_POST['email'];
+//     $message = $_POST['message'];
+
+//     mysqli_query($conn, "INSERT INTO contact(name, subject,email,message) VALUES('$name','$subject','$email','$message')");
+
+//     echo "<script>
+
+//       </script>";
+//     // header('location: index.php');
+// }
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,9 +26,10 @@ include('config.php');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SeeU Letter!</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="index.css">
-
+  <link rel="stylesheet" href="sweetalert2.min.css">
 </head>
 
 <body style="background-image: url(ballons.jpg);background-size:cover;">
@@ -37,17 +54,18 @@ include('config.php');
       </div>
     </div>
     <?php if (!isset($_SESSION['username'])) : ?>
-      <a class="btn btn-primary me-5" href="login.php">Login</a>
+    <a class="btn btn-primary me-5" href="login.php">Login</a>
     <?php else : ?>
-      <div class="dropdown pe-5">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <?= $_SESSION['username'] ?>
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="pelanggan-order.php?">My Order</a></li>
-          <li><a class="dropdown-item" href="logout.php?logout=true">Logout</a></li>
-        </ul>
-      </div>
+    <div class="dropdown pe-5">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        <?= $_SESSION['username'] ?>
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="pelanggan-order.php?">My Order</a></li>
+        <li><a class="dropdown-item" href="logout.php?logout=true">Logout</a></li>
+      </ul>
+    </div>
     <?php endif; ?>
   </nav>
 
@@ -55,7 +73,11 @@ include('config.php');
     <div class="jumbotron jumbotron-fluid">
       <div class="container jumbotron" style="text-align: center;transform:translateY(5%);">
         <h1 class="display-4" style="color: white;padding-bottom: 3%">SeeU Letter!</h1>
-        <iframe style="height: 500px; width: 1000px" src="https://www.youtube.com/embed/X8X2IAMcORQ?rel=0&amp;autoplay=1&amp;controls=1&amp;showinfo=0&amp;mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe style="height: 500px; width: 1000px"
+          src="https://www.youtube.com/embed/X8X2IAMcORQ?rel=0&amp;autoplay=1&amp;controls=1&amp;showinfo=0&amp;mute=1"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
         <p class="lead" style="color: white;padding-top: 3%">Exclusive invitation letters with 100+ attractive
           designs and can be shared with those who are farthest away. Keep in touch with your loved ones!</p>
       </div>
@@ -98,34 +120,38 @@ include('config.php');
           <div class="col-md-6 col-lg-6 col-sm-12">
             <div class="contact-block">
               <h2 style="color: white;">Contact Us</h2>
-              <form id="contactForm">
+              <form id="contactForm" method="post">
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
                       <input type="hidden" name="contact_number">
-                      <input type="text" class="form-control" id="name" name="user_name" placeholder="Name" required data-error="Please enter your name">
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Name" required
+                        data-error="Please enter your name">
                       <div class="help-block with-errors"></div>
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
-                      <input type="text" placeholder="Email" id="email" class="form-control" name="user_email" required data-error="Please enter your email">
+                      <input type="text" placeholder="Email" id="email" class="form-control" name="email" required
+                        data-error="Please enter your email">
                       <div class="help-block with-errors"></div>
                     </div>
                   </div>
                   <div class="col-md-12 mb-3">
                     <div class="form-group">
-                      <input type="text" placeholder="Subject" id="msg_subject" class="form-control" required data-error="Please enter your subject">
+                      <input type="text" placeholder="Subject" name="subject" id="msg_subject" class="form-control"
+                        required data-error="Please enter your subject">
                       <div class="help-block with-errors"></div>
                     </div>
                   </div>
                   <div class="col-md-12 mb-3">
                     <div class="form-group mb-3">
-                      <textarea class="form-control" id="message" name="message" placeholder="Your Message" rows="5" data-error="Write your message" required></textarea>
+                      <textarea class="form-control" name="message" id="message" name="message"
+                        placeholder="Your Message" rows="5" data-error="Write your message" required></textarea>
                       <div class="help-block with-errors"></div>
                     </div>
                     <div class="submit-button">
-                      <button class="btn btn-primary" id="submit" type="submit">Send
+                      <button class="btn btn-primary" name="contact" id="submit" type="button">Send
                         Message</button>
                       <div id="msgSubmit" class="h3 text-center hidden"></div>
                       <div class="clearfix"></div>
@@ -141,7 +167,8 @@ include('config.php');
 
     <div class="container pb-3">
       <div>
-        <object style="border:0; height: 450px; width: 100%;" data="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14517.575936787198!2d112.75451599042498!3d-7.254254508290915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7f9745f4723db%3A0xea981d415f7a1ffa!2sKaza%20Mall%20Surabaya!5e0!3m2!1sen!2sid!4v1642487847908!5m2!1sen!2sid"></object>
+        <object style="border:0; height: 450px; width: 100%;"
+          data="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14517.575936787198!2d112.75451599042498!3d-7.254254508290915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7f9745f4723db%3A0xea981d415f7a1ffa!2sKaza%20Mall%20Surabaya!5e0!3m2!1sen!2sid!4v1642487847908!5m2!1sen!2sid"></object>
       </div>
     </div>
   </section>
@@ -150,8 +177,19 @@ include('config.php');
       <p style="font-size: larger;transform:translateY(120%);">SeeU Letter! by UrName</p>
     </center>
   </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+  const btnSubmit = document.getElementById('submit');
+  btnSubmit.addEventListener('click', () => {
+    Swal.fire(
+      'Success!',
+      'message has been sent successfully!',
+      'success'
+    )
+  })
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
 </body>
 
