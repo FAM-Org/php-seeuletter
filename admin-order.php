@@ -1,10 +1,10 @@
 <?php
 include('config.php');
-if ($_SESSION['id'] != TRUE) {
+if ($_SESSION['admin'] != TRUE) {
   header('location:login.php');
 }
 $email = $_SESSION["email"];
-$select = "SELECT * FROM service_order WHERE Status = 'Menunggu'";
+$select = "SELECT * FROM service_order";
 $query = mysqli_query($conn, $select);
 if (isset($_GET['Id'])) {
   $idpesanan = $_GET['Id'];
