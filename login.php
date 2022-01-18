@@ -30,7 +30,7 @@ if (isset($_POST['Login'])) {
 
                 <div class="form-group mb-3">
                     <label for="Password">Password</label for="Password">
-                    <input type="text" class="form-control" id="Password" name="Password" value="<?php if (isset($_COOKIE['password'])) echo $_COOKIE['password']; ?>">
+                    <input type="password" class="form-control" id="Password" name="Password" value="<?php if (isset($_COOKIE['password'])) echo $_COOKIE['password']; ?>">
                 </div>
                 <div class=" mb-2">
                     <div class="form-check">
