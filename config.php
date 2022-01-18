@@ -26,14 +26,14 @@ function register($request)
 
     $emailcheck = "SELECT email FROM user WHERE email='$email'";
     $select = mysqli_query($conn, $emailcheck);
-    
+
     if (!mysqli_fetch_assoc($select)) {
 
         $password = password_hash($password, PASSWORD_DEFAULT);
 
         $query = "INSERT INTO user VALUES ('$email', '$username', '$password', '', '')";
         mysqli_query($conn, $query);
-        
+
         $_SESSION['registered'] = 'Berhasil registrasi, silahkan login';
 
         header("Location: login.php");
@@ -69,12 +69,12 @@ function Login($request)
                 setcookie('username', $username, strtotime('+3 days'), '/');
                 setcookie('password', $password, strtotime('+3 days'), '/');
             }
-            if ($admin == 1):
+            if ($admin == 1) :
                 header("Location: admin-order.php");
             else :
                 header("Location: index.php");
             endif;
-           
+
             exit();
         } else {
             $_SESSION['message'] = "Password Salah";
