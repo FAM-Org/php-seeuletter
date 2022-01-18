@@ -67,7 +67,7 @@ if ($_SESSION['id'] != TRUE) {
                         <td>Art Paper</td>
                         <td>21 x 30 cm</td>
                         <td>Rp. 5.000 / Pcs</td>
-                        <td><button class="btn btn-primary" id="submit" data-bs-toggle="modal" data-bs-target="#modalbeli">Beli</button></td>
+                        <td><button class="btn btn-primary" id="submit" data-bs-toggle="modal" data-bs-target="#modaledit">Edit</button></td>
                     </tr>
 
                     <tr>
@@ -75,7 +75,7 @@ if ($_SESSION['id'] != TRUE) {
                         <td>Art Paper</td>
                         <td>22 x 22 cm</td>
                         <td>Rp. 7.000 / Pcs</td>
-                        <td><button class="btn btn-primary" id="submit" data-bs-toggle="modal" data-bs-target="#modalbeli">Beli</button></td>
+                        <td><button class="btn btn-primary" id="submit" data-bs-toggle="modal" data-bs-target="#modaledit">Edit</button></td>
                     </tr>
 
                     <tr>
@@ -83,7 +83,7 @@ if ($_SESSION['id'] != TRUE) {
                         <td>Samson Craft</td>
                         <td>21 x 30 cm</td>
                         <td>Rp. 8.000 / Pcs</td>
-                        <td><button class="btn btn-primary" id="submit" data-bs-toggle="modal" data-bs-target="#modalbeli">Edit</button></td>
+                        <td><button class="btn btn-primary" id="submit" data-bs-toggle="modal" data-bs-target="#modaledit">Edit</button></td>
                     </tr>
 
                     <tr>
@@ -91,7 +91,7 @@ if ($_SESSION['id'] != TRUE) {
                         <td>Samson Craft</td>
                         <td>22 x 22 cm</td>
                         <td>Rp. 10.000 / Pcs</td>
-                        <td><button class="btn btn-primary" id="submit" data-bs-toggle="modal" data-bs-target="#modalbeli">Edit</button></td>
+                        <td><button class="btn btn-primary" id="submit" data-bs-toggle="modal" data-bs-target="#modaledit">Edit</button></td>
                     </tr>
 
                     <tr>
@@ -99,7 +99,7 @@ if ($_SESSION['id'] != TRUE) {
                         <td>Art Paper</td>
                         <td>21 x 30 cm</td>
                         <td>Rp. 5000 / Pcs</td>
-                        <td><button class="btn btn-primary" id="submit" data-bs-toggle="modal" data-bs-target="#modalbeli">Edit</button></td>
+                        <td><button class="btn btn-primary" id="submit" data-bs-toggle="modal" data-bs-target="#modaledit">Edit</button></td>
                     </tr>
 
                     <tr>
@@ -107,7 +107,7 @@ if ($_SESSION['id'] != TRUE) {
                         <td>Art Carton</td>
                         <td>21 x 30 cm</td>
                         <td>Rp. 12.000 / Pcs</td>
-                        <td><button class="btn btn-primary" id="submit" data-bs-toggle="modal" data-bs-target="#modalbeli">Edit</button></td>
+                        <td><button class="btn btn-primary" id="submit" data-bs-toggle="modal" data-bs-target="#modaledit">Edit</button></td>
                     </tr>
 
                     <tr>
@@ -115,16 +115,16 @@ if ($_SESSION['id'] != TRUE) {
                         <td>Art Carton</td>
                         <td>22 x 22 cm</td>
                         <td>Rp. 15.000 / Pcs</td>
-                        <td><button class="btn btn-primary" id="submit" data-bs-toggle="modal" data-bs-target="#modalbeli">Edit</button></td>
+                        <td><button class="btn btn-primary" id="submit" data-bs-toggle="modal" data-bs-target="#modaledit">Edit</button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="modal fade" id="modalbeli" tabindex="-1" aria-labelledby="modalbeli" aria-hidden="true">
+        <div class="modal fade" id="modaledit" tabindex="-1" aria-labelledby="modaledit" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalbeli">Birthday Package Form</h5>
+                        <h5 class="modal-title" id="modaledit">Birthday Package Form</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
