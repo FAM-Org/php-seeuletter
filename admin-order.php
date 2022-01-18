@@ -1,5 +1,8 @@
 <?php
 include('config.php');
+if ($_SESSION['id'] != TRUE) {
+  header('location:login.php');
+}
 $email = $_SESSION["email"];
 $select = "SELECT * FROM service_order WHERE Status = 'Menunggu'";
 $query = mysqli_query($conn, $select);

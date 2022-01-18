@@ -1,5 +1,8 @@
 <?php
 include('config.php');
+if ($_SESSION['id'] != TRUE) {
+    header('location:login.php');
+}
 ?>
 
 <!DOCTYPE html>
