@@ -90,10 +90,10 @@ if (isset($_GET['Id_hapus'])) {
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="admin-index.php#home">Home</a>
+                        <a class="nav-link" aria-current="page" href="admin-index.php#home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin-price1.php">Wedding Package</a>
+                        <a class="nav-link active" href="admin-price1.php">Wedding Package</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="admin-price2.php">Birthday Package</a>
