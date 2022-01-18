@@ -7,7 +7,7 @@ if (isset($_GET['id_hapus'])) {
   $idpesanan = $_GET['id_hapus'];
   mysqli_query($conn, "DELETE FROM service_order WHERE id = '$idpesanan'");
   $_SESSION['message'] = "Berhasil Hapus";
-  header("location: pelanggan-order.php?id=" . $id);
+  header("location: pelanggan-order.php");
 }
 ?>
 
