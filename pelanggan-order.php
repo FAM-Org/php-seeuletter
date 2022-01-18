@@ -62,73 +62,76 @@ if (isset($_GET['Id'])) {
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed top">
         <a class="navbar-brand" href="#"><img src="SeeULetter! logo.png" alt="" width="100px"></a>
         <div class="container">
-            <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav" style="padding-right: 10%;">
-                <?php if (!isset($_SESSION['username'])) : ?>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php#home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php#package">Package</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php#contactus">Contact Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-primary" href="login.php">Login</a>
-                        </li>
-                    <?php else : ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?= $_SESSION['username'] ?>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="pelanggan-order.php?">My Order</a></li>
-                                <li><a class="dropdown-item" href="logout.php?logout=true">Logout</a></li>
-                            </ul>
-                        </li>
-                        </li>
-                    <?php endif; ?>
-                    </ul>
-            </div>
-        </div>
-    </nav>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed top">
+                <a class="navbar-brand" href="#"><img src="SeeULetter! logo.png" alt="" width="100px"></a>
+                <div class="container">
+                    <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav" style="padding-right: 10%;">
 
-    <div class="container" style="margin-top: 5%;">
-        <table class="table table-dark table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Kontak</th>
-                    <th scope="col">Service</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $no = 1;
-                while ($selects = mysqli_fetch_assoc($query)) :
-                ?>
-                    <tr>
-                        <th scope="row"><?= $no++ ?></th>
-                        <td><?= $selects['Email'] ?></td>
-                        <td><?= $selects['Name'] ?></td>
-                        <td><?= $selects['Kontak'] ?></td>
-                        <td><?= $selects['Service_detail'] ?></td>
-                        <td>
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-                                100% Complete
-                            </div>
-                        </td>
-                        <td><a class="btn btn-danger" href="Details.php?Id=<?= $selects['Id'] ?>">Hapus</a></td>
-                    </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
-    </div>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#package">Package</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contactus">Contact Us</a>
+                            </li>
+                            <?php if (!isset($_SESSION['username'])) : ?>
+                                <li class="nav-item">
+                                    <a class="btn btn-primary" href="login.php">Login</a>
+                                </li>
+                            <?php else : ?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <?= $_SESSION['username'] ?>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="pelanggan-order.php?">My Order</a></li>
+                                        <li><a class="dropdown-item" href="logout.php?logout=true">Logout</a></li>
+                                    </ul>
+                                </li>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container" style="margin-top: 5%;">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Kontak</th>
+                            <th scope="col">Service</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $no = 1;
+                        while ($selects = mysqli_fetch_assoc($query)) :
+                        ?>
+                            <tr>
+                                <th scope="row"><?= $no++ ?></th>
+                                <td><?= $selects['Email'] ?></td>
+                                <td><?= $selects['Name'] ?></td>
+                                <td><?= $selects['Kontak'] ?></td>
+                                <td><?= $selects['Service_detail'] ?></td>
+                                <td>
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                        100% Complete
+                                    </div>
+                                </td>
+                                <td><a class="btn btn-danger" href="Details.php?Id=<?= $selects['Id'] ?>">Hapus</a></td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
 </body>
 
 </html>
