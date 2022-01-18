@@ -36,27 +36,26 @@ if (isset($_POST['order'])) {
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Birthday Package Pricelist</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 
 <style>
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1040;
-  background-color: #000;
-}
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000;
+  }
 
-.modal-backdrop.in {
-  filter: alpha(opacity=50);
-  opacity: .5;
-}
+  .modal-backdrop.in {
+    filter: alpha(opacity=50);
+    opacity: .5;
+  }
 </style>
 
 <body style="background-image: url(ballons.jpg);background-size:cover;">
@@ -64,32 +63,30 @@ if (isset($_POST['order'])) {
     <a class="navbar-brand" href="#"><img src="SeeULetter! logo.png" alt="" width="100px"></a>
     <div class="container">
       <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav" style="padding-right: 10%;">
-        <?php if (!isset($_SESSION['username'])) : ?>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php#home">Home</a>
+            <a class="nav-link active" aria-current="page" href="#home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.php#package">Package</a>
+            <a class="nav-link" href="#package">Package</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.php#contactus">Contact Us</a>
+            <a class="nav-link" href="#contactus">Contact Us</a>
           </li>
-          <li class="nav-item">
-            <a class="btn btn-primary" href="login.php">Login</a>
-          </li>
+          <?php if (!isset($_SESSION['username'])) : ?>
+            <li class="nav-item">
+              <a class="btn btn-primary" href="login.php">Login</a>
+            </li>
           <?php else : ?>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <?= $_SESSION['username'] ?>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="pelanggan-order.php?">My Order</a></li>
-              <li><a class="dropdown-item" href="logout.php?logout=true">Logout</a></li>
-            </ul>
-          </li>
-          </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <?= $_SESSION['username'] ?>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="pelanggan-order.php?">My Order</a></li>
+                <li><a class="dropdown-item" href="logout.php?logout=true">Logout</a></li>
+              </ul>
+            </li>
           <?php endif; ?>
         </ul>
       </div>
@@ -97,8 +94,7 @@ if (isset($_POST['order'])) {
   </nav>
 
   <section>
-    <div class="container"
-      style="background-color: #00000099;background-size:cover;color:white;transform:translateY(20%);height: auto;padding-bottom:1%">
+    <div class="container" style="background-color: #00000099;background-size:cover;color:white;transform:translateY(20%);height: auto;padding-bottom:1%">
       <h2 align="center" style="padding-top: 3%;" mt-2>Birthday Package Pricelist</h2>
       <br><br>
       <table class="table" style="color: white;">
@@ -116,24 +112,22 @@ if (isset($_POST['order'])) {
           $no = 1;
           while ($selects = mysqli_fetch_assoc($query)) :
           ?>
-          <tr>
-            <td scope="row"><?= $no++ ?></td>
-            <td><?= $selects['material'] ?></td>
-            <td><?= $selects['size'] ?></td>
-            <td>
-              <?= rupiah((int)$selects['price']) ?> / pcs
-            </td>
-            <td><button data-harga="<?= $selects['price'] ?>" data-material="<?= $selects['material'] ?>" type="button"
-                class="btn btnOrder btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Beli</button>
-            </td>
-          </tr>
+            <tr>
+              <td scope="row"><?= $no++ ?></td>
+              <td><?= $selects['material'] ?></td>
+              <td><?= $selects['size'] ?></td>
+              <td>
+                <?= rupiah((int)$selects['price']) ?> / pcs
+              </td>
+              <td><button data-harga="<?= $selects['price'] ?>" data-material="<?= $selects['material'] ?>" type="button" class="btn btnOrder btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Beli</button>
+              </td>
+            </tr>
 
           <?php endwhile; ?>
         </tbody>
       </table>
     </div>
-    <div class="modal fade" data-backdrop="false" id="exampleModal" tabindex="-1" aria-labelledby="exampleModal"
-      aria-hidden="true">
+    <div class="modal fade" data-backdrop="false" id="exampleModal" tabindex="-1" aria-labelledby="exampleModal" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -147,8 +141,7 @@ if (isset($_POST['order'])) {
                 <legend>1.Biodata</legend>
                 <div class="mb-3">
                   <label>Email:</label>
-                  <input type="email" id="email" name="email" value="<?= $_SESSION['email'] ?>" class="form-control"
-                    readonly>
+                  <input type="email" id="email" name="email" value="<?= $_SESSION['email'] ?>" class="form-control" readonly>
                 </div>
                 <div class="mb-3">
                   <label>Nama:</label>
@@ -169,8 +162,7 @@ if (isset($_POST['order'])) {
                 </div>
                 <div class="mb-3">
                   <label>Harga:</label>
-                  <input type="number" id="harga" name="harga" value="sesuai harga yang ditampilin di tabel"
-                    class="form-control" readonly>
+                  <input type="number" id="harga" name="harga" value="sesuai harga yang ditampilin di tabel" class="form-control" readonly>
                 </div>
                 <div class="mb-3">
                   <label>Total Harga:</label>
@@ -189,27 +181,26 @@ if (isset($_POST['order'])) {
     </div>
   </section>
   <script>
-  const btnOrder = document.getElementsByClassName('btnOrder');
-  let harga = document.getElementById('harga');
-  let total_harga = document.getElementById('total_harga');
-  let quantity = document.getElementById('quantity');
-  let material = document.getElementById('material');
-  let harga_package = document.getElementById('harga_package');
+    const btnOrder = document.getElementsByClassName('btnOrder');
+    let harga = document.getElementById('harga');
+    let total_harga = document.getElementById('total_harga');
+    let quantity = document.getElementById('quantity');
+    let material = document.getElementById('material');
+    let harga_package = document.getElementById('harga_package');
 
-  Array.prototype.forEach.call(btnOrder, function(element) {
-    element.addEventListener("click", function() {
-      harga_package = element.getAttribute("data-harga");
-      harga.value = harga_package
-      material.value = element.getAttribute("data-material");
+    Array.prototype.forEach.call(btnOrder, function(element) {
+      element.addEventListener("click", function() {
+        harga_package = element.getAttribute("data-harga");
+        harga.value = harga_package
+        material.value = element.getAttribute("data-material");
 
-      quantity.addEventListener('keyup', () => {
-        total_harga.value = harga_package * quantity.value
-      })
+        quantity.addEventListener('keyup', () => {
+          total_harga.value = harga_package * quantity.value
+        })
+      });
     });
-  });
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
 </body>
 
