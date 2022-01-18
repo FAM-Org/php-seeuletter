@@ -75,13 +75,13 @@ if (isset($_POST['update_progress'])) {
 
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#home">Home</a>
+            <a class="nav-link active" aria-current="page" href="index.php#home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#package">Package</a>
+            <a class="nav-link" href="index.php#package">Package</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#contactus">Contact Us</a>
+            <a class="nav-link" href="index.php#contactus">Contact Us</a>
           </li>
           <?php if (!isset($_SESSION['username'])) : ?>
             <li class="nav-item">
