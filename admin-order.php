@@ -6,11 +6,17 @@ if ($_SESSION['admin'] != TRUE) {
 $email = $_SESSION["email"];
 $select = "SELECT * FROM service_order";
 $query = mysqli_query($conn, $select);
-if (isset($_GET['Id'])) {
-  $idpesanan = $_GET['Id'];
-  mysqli_query($conn, "DELETE FROM service_order WHERE Id = '$idpesanan'");
-  $_SESSION['message'] = "Berhasil Hapus";
-  header("location: Admin_Details.php");
+if (isset($_GET['Id_hapus'])) {
+  $idpesanan = $_GET['Id_hapus'];
+  mysqli_query($conn, "DELETE FROM service_order WHERE id = '$idpesanan'");
+  header("location: admin-order.php");
+}
+
+if (isset($_POST['update_progress'])) {
+  $progress = $_POST['progress'];
+  $id_order = $_POST['id_order'];
+  mysqli_query($conn, "Update service_order set progress='$progress' where id='$id_order'");
+  header("location: admin-order.php");
 }
 ?>
 
@@ -98,7 +104,7 @@ if (isset($_GET['Id'])) {
           <th scope="col">Nama</th>
           <th scope="col">Kontak</th>
           <th scope="col">Service</th>
-          <th scope="col">Status</th>
+          <th scope="col">Progress</th>
           <th scope="col">Aksi</th>
         </tr>
       </thead>
@@ -109,20 +115,58 @@ if (isset($_GET['Id'])) {
         ?>
           <tr>
             <th scope="row"><?= $no++ ?></th>
-            <td><?= $selects['Email'] ?></td>
-            <td><?= $selects['Name'] ?></td>
-            <td><?= $selects['Kontak'] ?></td>
-            <td><?= $selects['Service_detail'] ?></td>
-            <td><?= $selects['Status'] ?></td>
+            <td><?= $selects['email'] ?></td>
+            <td><?= $selects['name'] ?></td>
+            <td><?= $selects['kontak'] ?></td>
+            <td><?= $selects['service_detail'] ?></td>
             <td>
-              <a class="btn btn-primary" href="Done.php?Id=<?= $selects['Id'] ?>">Done!</a>
-              <a class="btn btn-danger" href="Admin_Details.php?Id=<?= $selects['Id'] ?>">Hapus</a>
+              <?php if ($selects['progress'] > 0) : ?>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="<?= $selects['progress'] ?>" aria-valuemin="0" aria-valuemax="100">
+                    <?= $selects['progress'] ?>%</div>
+                </div>
+              <?php else : ?>
+                Belum diproses
+              <?php endif; ?>
+            </td>
+            <td>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $selects['id'] ?>">
+                Update Progress
+              </button>
+              <a class="btn btn-danger" href="admin-order.php?Id_hapus=<?= $selects['id'] ?>">Hapus</a>
             </td>
           </tr>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal<?= $selects['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"><?= $selects['service_detail'] ?></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="post">
+                  <div class="modal-body">
+                    <div class="mb-3">
+                      <input type="hidden" name="id_order" value="<?= $selects['id'] ?>">
+                      <label for="exampleInputEmail1" class="form-label">Progress</label>
+                      <input name="progress" type="number" class="form-control" value="<?= $selects['progress'] ?>" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" name="update_progress" class="btn btn-primary">Save changes</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         <?php endwhile; ?>
       </tbody>
     </table>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </script>
 </body>
 
 </html>
